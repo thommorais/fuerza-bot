@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "fuerza-lab",
+  "private_key_id": "8753937601598efe069885d90925c92781c36908",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCXAA/hrqStDQLc\nBY1cdWUENW54IDFcLw/rDdLcPiGC7APzxpR4hsNgpfqjLMTPv22r7b5llQnXj2fK\n38Ur9DamQ2EmpbKquYAeO6yq0wel57i1tRBJNky18D7Yts05kc4aAKR/7dAcCBWn\nvA+6AZbX5n+VXyB+cLHP6Ia8rq+1gmlPZdZduTlDE29YmGTsJxm1noM1/h9JjffX\neDJ/yoBi48gwON/JGO03OM4oWQ/JQmGSzXfhQvejM2fq740grnS+JALSZrEi7Wtx\nFQzm9um9mLIPXMCYV+Ow4u5s40f+jKGbQ971Ttu29aMEbBH5y++SU9e0VtvWKP6d\nosTUdM7RAgMBAAECggEAepyySK9nSJ2oFMDtaIZq4GACs8hwTEpqwpMXBX/t9kFv\ndCNrq/LB81jTjGxt48Otak5CrHm45DCuNy49DNPhDGDqIleqHLdEMUiDjLKPI0hl\n1CaScuCEqbfLUG4fdv/OO48KBFc3BYwLCYjLvF5N/kJMlx4HZKRdvlUyE0RFqTxc\ns0RLaagOUA6WpFnlu8J8MeK/o/iH6Z6V9bBHN7LYfLwpbQ797i1MkiCEk+zNRgdZ\nvf8IKJt9Pn0tO9IurUY93FY5GJ/Y7x0SavbBUlCCN5lMYZmDOUIdQZCCO/SsygbE\nIWij8M6NidXpDtxXxb36yzPjM8jgKDjdPfVRRzb4AQKBgQDHG6+YF7Xb/ZL1h11Z\nTQvP3P1EKDgHAGzcLavq9s/C4h88iON4zivda4EQlCMH7VwjOuoQuv2z5KWbRILh\nwPB6P7Psw3+FUWa6DMthzksDYUJAdh6h16WSZYCSKtvtezDWqknltlSWrnhcxID0\nYsH4Dvt7VqymrY2XNp7nWPbHqQKBgQDCJWQL3lGak7e1JYJspxJmEqt503f9pNhz\ndvfb5MFlrtmbAM72ALi/cUrzW/CZPY0dOIUCSG1qGqLVJoEXv9pnUO3nprhxew+J\ne6Ru3NuFpfEiCW+C4GHab6XEahi04aD/Pbr8qgerl8onIZEHkRWp4kEzYZvzCWQd\nGBv10kYm6QKBgFSaH/+JO53xXitzzCdwxG8bYIZAbKYU+SyJP36ERv1w5YLsS3N+\nb0cTMfEgcM4ifj79/o0DV1/D7NZPwyk3uTbIsKQO4bV9RCAT5at2Y4tZHTSUvCla\nnyDYfkwdZ/u9l5/vFZ1E3yZzlfMdEApHmFHV0+exiYT9Q6eX7ucwdxOZAoGARPz0\naCM/7CXBieUiS2my6AKKXGgAo2kIYT9NJB5Nesx/Fs1avZ/UBnNDpuZswIdWtaN3\n4C/McX+1jPh5tu69tSjU4RQlRm3sP3ZoH9zrRLqKzQV9UoxZOT2jMgBhdyUWCJzu\n7QmeYCM3+l+7IW00vYFgmdl9iQc1RAFlLhziQMECgYA/H6V/eRilG2xTmVtCm3iV\nVKxeVF7SlyiOEZgbyAnhZWq5/4Gh/y1LxpoNFWdnMIar00BZ8OhQ38WlFT7X+u9Q\nGIz+SJ4NYxFJU/J4WXZaV0tioWkNy9R3173gMjgTUKcNpTcvXKxFACPfLBjV3Mof\nTZU7ZaURjt11RvlXGRhFPg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "fuerza-bot@fuerza-lab.iam.gserviceaccount.com",
+  "client_id": "105101236790720728741",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/fuerza-bot%40fuerza-lab.iam.gserviceaccount.com"
+}

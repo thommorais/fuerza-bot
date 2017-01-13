@@ -8,18 +8,18 @@ function quickReplies() {
 
         switch (what) {
 
-            case 'professionalOrEnterprise':
+            case 'maintenanceOrtour':
                 text = {
-                    text: 'Olá, você é um profissional ou uma empresa? ',
+                    text: 'Olá, gostaria de solicitar algum reparo ou então acompanhar o adamento de algum já solicitado?',
                     quick_replies: [{
                             content_type: 'text',
-                            title: 'Profissional',
-                            payload: 'pick_profissional'
+                            title: 'Solicitar',
+                            payload: 'getMaintenance'
                         },
                         {
                             content_type: 'text',
-                            title: 'Empresa',
-                            payload: 'pick_empresa'
+                            title: 'Acomanhar andamento',
+                            payload: 'getStatus'
                         }
                     ]
                 }

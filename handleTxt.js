@@ -1,46 +1,66 @@
 function textMessages() {
     'use strict'
 
+    let senderFile   = require('./sender'),
+        senderMsg    = new senderFile()
+
+
     // handle attachments (images, location, ...)
     this.handleMessage = (event, sender) => {
-      let messageData
-      let msg = event.message
 
-          // console.log('👉', value)
+      let messageData = {},
+          msg = event.message
 
-          if (msg.quick_reply) {
+          console.log('👉', msg)
 
-              if (msg.quick_reply.payload) {
-                  switch (msg.quick_reply.payload) {
+      if (msg.quick_reply) {
 
-                  case 'pick_profissional':
-                      messageData = quickAction.handleAction('interestArea', sender)
-                      break
+        if (msg.quick_reply.payload) {
 
-                  default:
-                      messageData = {
-                          text: '😊'
-                      }
-                  }
+            switch (msg.quick_reply.payload) {
+
+            case 'getMaintenance':
+                messageData = {
+                    text: 'Solicitar Manutenção'
+                }
+                break
+
+            case 'getStatus':
+                messageData = {
+                    text: 'Acompanhar Manutenção'
+                }
+                break
+
+            default:
+                messageData = {
+                    text: '😊'
+                }
+            }
+        }
+
+      } else {
+
+        switch (msg.text) {
+
+          case 'Olá':
+              messageData = { text: 'Olá'}
+              break
+
+          case 'Oi':
+              messageData = {text: 'Oi'}
+              break
+
+          default:
+              messageData = {
+                  text: 'Um texto qualquer '
               }
 
-          } else {
-            switch (msg.text) {
+        }
 
-              case 'Olá':
-                  messageData = { text: 'Olá'}
-                  break
+      }
 
-              case 'Oi':
-                  messageData = {text: 'Oi'}
-                  break
-
-              default:
-                  messageData = {
-                      text: 'Um texto qualquer '
-                  }
-            }
-          }
+      // send the result
+      senderMsg.send(sender, messageData)
 
     }
 }

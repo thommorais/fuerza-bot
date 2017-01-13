@@ -1,11 +1,18 @@
-var express = require('express'),
-    app = express(),
-    bodyParser = require('body-parser'),
-    workMessages = require('./comunicator'),
-    getStarted = require('./getStartedButton'),
+var express       = require('express'),
+    app           = express(),
+    bodyParser    = require('body-parser'),
+    workMessages  = require('./receiver'),
+    getStarted    = require('./getStartedButton'),
+    admin         = require('firebase-admin'),
 
     getStartedBtn = new getStarted(),
-    messenger = new workMessages()
+    messenger     = new workMessages()
+
+    // Conect to firebase
+    fire = admin.initializeApp({
+        credential: admin.credential.cert('./firebase-cert.json'),
+        databaseURL: "https://fuerza-lab.firebaseio.com/"
+    })
 
 app.use(bodyParser.json())
 

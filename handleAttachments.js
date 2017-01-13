@@ -1,7 +1,9 @@
 function attachments() {
     'use strict'
 
-    let messageData
+    let messageData,
+        senderFile   = require('./sender'),
+        senderMsg    = new senderFile()
 
     // handle attachments (images, location, ...)
     this.handleAttachments = (attachment, sender) => {
@@ -20,8 +22,9 @@ function attachments() {
                 messageData = quickAction.handleAction('cityAndRegion', sender)
         }
 
-
-
+        // send the result
+        senderMsg.send(sender, messageData)
+        
     }
 
 }
