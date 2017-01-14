@@ -3,16 +3,16 @@ function messenger() {
     'use strict'
 
     let
-        attachments   = require('./handleAttachments'),
-        textMessages  = require('./handleTxt'),
-        buttons       = require('./handleActions'),
-        firebase      = require('./addToFirebase'),
-        senderFile    = require('./sender'),
+        attachments = require('./handleAttachments'),
+        textMessage = require('./handleTxt'),
+        buttons     = require('./handleActions'),
+        addFireFile = require('./addToFirebase'),
+        senderFile  = require('./sender'),
 
         attachment  = new attachments(),
-        txt         = new textMessages(),
+        txt         = new textMessage(),
         quickAction = new buttons(),
-        database    = new firebase(),
+        database    = new addFireFile(),
         senderMsg   = new senderFile(),
 
         messageData = {text: '😛'}
@@ -35,10 +35,10 @@ function messenger() {
                     // if it is an attachment (location or media)
                     if (!event.message.is_echo) {
 
-                        if (event.message.attachments)
-                            attachment.handleAttachments(event.message.attachments[0], sender)
-                         else
-                            txt.handleMessage(event, sender)
+                      if (event.message.attachments)
+                          attachment.handleAttachments(event.message.attachments[0], sender)
+                      else
+                          txt.handleMessage(event, sender)
 
                     }
 
@@ -48,19 +48,18 @@ function messenger() {
                     switch (event.postback.payload) {
 
                         case 'GET STARTED':
-                            messageData = quickAction.handleAction('maintenanceOrtour')
-                            database.userAdd(sender)
-                            break
+                          //messageData = quickAction.handleAction('maintenanceOrStatus')
+                          messageData = {text: 'Olá, digite o celular usado no cadastro.'}
+                          break
 
                         default:
-                            messageData = {
-                              text: 'O que você clicou? Não reconheço essa ação.'
-                            }
+                          messageData = {
+                            text: 'O que você clicou? Não reconheço essa ação.'
+                          }
 
                     }
 
                     senderMsg.send(sender, messageData)
-
 
                 }
             }

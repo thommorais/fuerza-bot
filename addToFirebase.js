@@ -1,5 +1,5 @@
 'use strict'
-var request     = require('request'),
+let request     = require('request'),
     rp          = require('request-promise'),
     token       = require('./token'),
     tokenValue  = new token()
@@ -13,37 +13,35 @@ function database(){
     let updates = {}
         updates[path] = data
 
-    return  global.fire.database().ref().update(updates)
+    return global.fire.database().ref().update(updates)
 
   }
 
-  // this function is to add users
-  this.userAdd = function(sender){
+  this.active = (user) =>{
 
-    let path = 'users' + '/' + sender,
-        options = {
-          url: 'https://graph.facebook.com/v2.6/'+sender+'?fields=first_name,last_name,profile_pic&access_token='+ tokenValue.tokenVar(),
-          json: true
-       }
+    let path = `users/${user}/active`
 
-    rp(options)
-        .then(function (response) {
+    add(path,true)
 
-          let data = {
-            full_name :  response.first_name + ' ' + response.last_name,
-            name : response.first_name,
-            last_name : response.last_name,
-            sender : sender
-          }
-
-          add(path,data).then(function(response){
-            return 'added'
-          })
-
-        }).catch(function (err) {
-          console.log(err)
-        })
   }
+
+  this.sender = (user, sender) =>{
+
+    let path = `users/${user}/sender`
+
+    add(path,sender)
+
+  }
+
+
+  this.newSender = (user, sender) =>{
+
+    let path = `indexes/${sender}`
+
+    add(path,user)
+
+  }
+
 
 
 }

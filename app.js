@@ -4,15 +4,16 @@ var express       = require('express'),
     workMessages  = require('./receiver'),
     getStarted    = require('./getStartedButton'),
     admin         = require('firebase-admin'),
-
     getStartedBtn = new getStarted(),
     messenger     = new workMessages()
 
-    // Conect to firebase
-    fire = admin.initializeApp({
-        credential: admin.credential.cert('./firebase-cert.json'),
-        databaseURL: "https://fuerza-lab.firebaseio.com/"
-    })
+
+
+// Conect to firebase
+fire = admin.initializeApp({
+    credential: admin.credential.cert('./firebase-cert.json'),
+    databaseURL: "https://fuerza-lab.firebaseio.com/"
+})
 
 app.use(bodyParser.json())
 
