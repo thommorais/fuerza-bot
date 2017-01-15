@@ -6,11 +6,13 @@ function textMessages() {
         addFireFile = require('./addToFirebase'),
         validator   = require('./validate'),
         buttons     = require('./handleActions'),
+        menus       = require('./menu'),
 
         senderMsg   = new senderFile(),
         getFire     = new getFireFile(),
         addFire     = new addFireFile(),
         validate    = new validator(),
+        show        = new menus(),
         quickAction = new buttons()
 
 
@@ -22,21 +24,18 @@ function textMessages() {
             switch (msg.quick_reply.payload) {
 
                 case 'getMaintenance':
-                    messageData = {
-                        text: 'Procurar apartamento vinculado ao usuário por telefone'
-                    }
+
+                    senderMsg.send(sender, {text: 'Procurar apartamento vinculado ao usuário por telefone'})
+
                     break
 
                 case 'getStatus':
-                    messageData = {
-                        text: 'Acompanhar Manutenção'
-                    }
+
+                    senderMsg.send(sender, {text: 'Ver Status'})
                     break
 
                 default:
-                    messageData = {
-                        text: '😊'
-                    }
+                      senderMsg.send(sender, {text: 'Ver Status'})
                     break
 
             }
@@ -44,9 +43,25 @@ function textMessages() {
         }
 
         if (msg.text) {
-            senderMsg.send(sender, {
-                text: '💪'
-            })
+
+          senderMsg.send(sender, {
+            text: '💪'
+          })
+
+
+          switch (msg.text) {
+
+            case 'menu':
+              show.menu()
+              break;
+
+            default:
+            senderMsg.send(sender, {text: 'Ver Status'})
+
+          }
+
+
+
         }
 
     }
@@ -74,6 +89,7 @@ function textMessages() {
                     addFire.sender(msg.text, sender)
                     addFire.active(msg.text)
                     senderMsg.send(sender, {text: '👍'})
+
                     senderMsg.send(sender, quickAction.handleAction('maintenanceOrStatus'))
 
                   }else{

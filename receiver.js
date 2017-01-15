@@ -4,15 +4,15 @@ function messenger() {
 
     let
         attachments = require('./handleAttachments'),
+        postbacks   = require('./handlePostBack'),
         textMessage = require('./handleTxt'),
         buttons     = require('./handleActions'),
-        addFireFile = require('./addToFirebase'),
         senderFile  = require('./sender'),
 
         attachment  = new attachments(),
+        postback    = new postbacks(),
         txt         = new textMessage(),
         quickAction = new buttons(),
-        database    = new addFireFile(),
         senderMsg   = new senderFile(),
 
         messageData = {text: '😛'}
@@ -45,21 +45,7 @@ function messenger() {
                     // if is postback
                 } else if (event.postback) {
 
-                    switch (event.postback.payload) {
-
-                        case 'GET STARTED':
-                          //messageData = quickAction.handleAction('maintenanceOrStatus')
-                          messageData = {text: 'Olá, digite o celular usado no cadastro.'}
-                          break
-
-                        default:
-                          messageData = {
-                            text: 'O que você clicou? Não reconheço essa ação.'
-                          }
-
-                    }
-
-                    senderMsg.send(sender, messageData)
+                    postback.handlePostback(event, sender)
 
                 }
             }

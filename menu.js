@@ -1,11 +1,11 @@
-function getStartedButton() {
+function showMenu() {
   'use strict'
 
   let request     = require('request'),
       token       = require('./token'),
       tokenValue  = new token()
 
-  this.showStarterButton = function() {
+  this.menu = function() {
 
     request({
         url: 'https://graph.facebook.com/v2.6/me/thread_settings',
@@ -18,7 +18,14 @@ function getStartedButton() {
             thread_state : 'existing_thread',
             call_to_actions:[
                 {
-                  'payload' : 'home'
+                  "type":"postback",
+                   "title":"Solicitar Manutenção",
+                   "payload":"maintenance"
+                },
+                {
+                  "type":"postback",
+                   "title":"Andamento de manutenção",
+                   "payload":"statusOfmaintenance"
                 }
               ]
         }
@@ -35,4 +42,4 @@ function getStartedButton() {
 
 }
 
-module.exports = getStartedButton
+module.exports = showMenu

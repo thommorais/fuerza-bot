@@ -24,3 +24,16 @@ curl -X POST -H "Content-Type: application/json" -d '{
 
 // User data
 //  curl -X GET "https://graph.facebook.com/v2.6/1090761591038429?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token=EAAN5QAbMFIsBADIkwP0g4FVXElSfUpKEp8w3MwSZA2RsncmtLlLEJDPNbcBZBSKlaGr8H0EuahEwPVsXdl4cJ3R7gTDCGyqRDSsJmODZAZBFU4hHvcMaJTu8nQjiyeDCY9cGTLZANNJYtv1bhxsd8oZBkPFSUQfdzkrgHjvSi6awZDZD
+
+
+curl -X POST -H "Content-Type: application/json" -d '{
+  "setting_type" : "call_to_actions",
+  "thread_state" : "existing_thread",
+  "call_to_actions":[
+    {
+      "type":"postback",
+      "title":"Help",
+      "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
+    }
+  ]
+}' "https://graph.facebook.com/v2.6/me/thread_settings?access_token=EAAKZAqHvHcUEBANBua8gsw6il8PZAlNy9AmobbnMZBYCWKZC2BnyxEagrJZBpD0d10AgfEj3btdvZBBzDreBTm8qZC4W9XpXBi87FH9Y56FkwZAtauKZAArtOD5hMKcZA8V0gHXLNEHCgBPUKXw2VH1wZADb6oqvDqkS08yMI1ZBx1cypQZDZD"
