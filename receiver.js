@@ -3,13 +3,13 @@ function messenger() {
     'use strict'
 
     let attachments = require('./handleAttachments'),
-        //postbacks   = require('./handlePostback'),
+        postbacks   = require('./handlePostback'),
         textMessage = require('./handleTxt'),
         buttons     = require('./handleActions'),
         senderFile  = require('./sender'),
 
         attachment  = new attachments(),
-        //postback    = new postbacks(),
+        postbacker  = new postbacks(),
         txt         = new textMessage(),
         quickAction = new buttons(),
         senderMsg   = new senderFile(),
@@ -44,9 +44,7 @@ function messenger() {
 
                     // if is postback
                 } else if (event.postback) {
-
-                  //  postback.postbackHandler(event, sender)
-                  console.log(event.postback)
+                  postbacker.postbackHandler(event)
                 }
             }
         }

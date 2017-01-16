@@ -8,7 +8,7 @@ function textPostback() {
 
 
 
-    this.postbackHandler = (event, sender) => {
+    this.postbackHandler = (event) => {
 
         switch (event.postback.payload) {
 
@@ -20,7 +20,7 @@ function textPostback() {
           case 'statusOfmaintenance' :
             //messageData = quickAction.handleAction('maintenanceOrStatus')
 
-            getFire.maintenance(sender).then((response) =>{
+            getFire.maintenance(sender).then((response) => {
 
               let messageData = {
                     message: {
@@ -62,11 +62,9 @@ function textPostback() {
             break
 
           default:
-            console.log('hey')
-            // getFire.maintenanceStatus(event.postback.payload).then((response) => {
-            //   console.log(response)
-            //   senderMsg.send(sender, response.message)
-            // })
+            getFire.maintenanceStatus(event.postback.payload).then((response) => {
+              senderMsg.send(sender, response.message)
+            })
             break
 
         }
