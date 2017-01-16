@@ -109,7 +109,7 @@ function textMessages() {
 
             }
 
-            if(testing){
+            if(testing && !isNaN(msg.text)){
               senderMsg.send(sender, {text: msg.text})
               addFire.justForTest(msg.text)
               testing = false
