@@ -61,6 +61,7 @@ function database(){
 
 
   this.justForTest = (number) => {
+    console.log(number)
 
     let path = `users/${number}`,
     data = {
@@ -72,6 +73,8 @@ function database(){
         phone : number,
         sender : undefined
       }
+
+      testing = false
 
       add(path,data)
 
