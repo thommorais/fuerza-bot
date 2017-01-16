@@ -46,7 +46,7 @@ function messenger() {
                     // if is postback
                 } else if (event.postback) {
 
-                    postback.handlePostback(event, sender)
+                    postback.postbackHandler(event, sender)
 
                 }
             }
