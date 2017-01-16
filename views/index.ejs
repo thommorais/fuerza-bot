@@ -34,7 +34,9 @@
       // Get a reference to the database service
       var database = firebase.database()
 
-      var users = database.ref('users')
+      var users = database.ref()
+      const home = document.querySelector('#home')
+
 
       users.on('value', function(snapshot) {
         console.log(snapshot.val())
