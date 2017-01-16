@@ -5,20 +5,20 @@ function attachments() {
         senderMsg    = new senderFile()
 
     // handle attachments (images, location, ...)
-    this.handler = (attachment, sender) => {
+    this.handler = (attachment) => {
 
         switch (attachment.type) {
 
-            case 'location':
-                senderMsg.send(sender, {  text:  '🏡'})
-                break
+          case 'location':
+              senderMsg.send(sender, {  text:  '🏡'})
+              break
 
-            case 'image':
-                senderMsg.send(sender, {  text: 'Bonito' })
-                break
+          case 'image':
+              senderMsg.send(sender, {  text: 'Bonito' })
+              break
 
-            default:
-                senderMsg.send(sender, {  text: 'Bonito' })
+          default:
+              senderMsg.send(sender, {  text: 'Bonito' })
 
         }
 

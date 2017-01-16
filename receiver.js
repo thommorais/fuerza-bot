@@ -36,9 +36,9 @@ function messenger() {
                     if (!event.message.is_echo) {
 
                       if (event.message.attachments)
-                          attachment.handler(event.message.attachments[0], sender)
+                          attachment.handler(event.message.attachments[0])
                       else
-                          txt.handler(event, sender)
+                          txt.handler(event)
 
                     }
 

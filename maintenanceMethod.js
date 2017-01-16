@@ -19,6 +19,8 @@ function maintenancer() {
 
     this.request = (msg) =>{
 
+      console.log(msg)
+
       if(maintenanceObject.title == null){
         maintenanceObject.title = msg
         senderMsg.send(sender, {text: 'Descreva o problema'})
@@ -34,10 +36,7 @@ function maintenancer() {
 let response = `${maintenanceObject.title}
                 ${maintenanceObject.description}`
 
-  //      senderMsg.send(sender,{text: response})
-//        senderMsg.send(sender, quickAction.handler('sendMaintenanceRequest'))
-
-        addFire.newMaintenance(sender, maintenanceObject.title, maintenanceObject.description)
+        addFire.newMaintenance(maintenanceObject.title, maintenanceObject.description)
         senderMsg.send(sender,{text: 'Manutenção solicitada :)'})
 
         maintenanceMode = false

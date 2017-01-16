@@ -28,42 +28,6 @@ function textMessages() {
                       maintenanceMode = true
                     break
 
-                case 'getStatus':
-                      getFire.maintenance(sender).then((response) =>{
-
-                        let messageData = {
-                              message: {
-                                  attachment: {
-                                    type: "template",
-                                    payload: {
-                                      template_type: "generic",
-                                      elements: []
-                                    }
-                                  }
-                              }
-                            }
-
-                        Object.keys(response.maintenance).forEach((key) => {
-
-                          messageData.message.attachment.payload.elements.push({
-                                title: response.maintenance[key].title,
-                                subtitle: response.maintenance[key].description,
-                                item_url: 'http://images.locanto.ae/1162282060/Home-and-Building-Maintenance-Service-and-we-take-yearly-contrac_3.jpg',
-                                image_url: 'http://images.locanto.ae/1162282060/Home-and-Building-Maintenance-Service-and-we-take-yearly-contrac_3.jpg',
-                                buttons: [{
-                                  type: 'postback',
-                                  title: 'Ver andamento',
-                                  payload: response.maintenance[key].stamp,
-                                }]
-                          })
-
-                        })
-
-                        senderMsg.send(sender, messageData.message)
-
-                      })
-                    break
-
                 default:
                     senderMsg.send(sender, {text: 'Ver Status'})
                     break
@@ -122,7 +86,7 @@ function textMessages() {
     }
 
     // validate user
-    this.handler = (event, sender) => {
+    this.handler = (event) => {
 
         let messageData = {},
             msg = event.message
@@ -140,16 +104,13 @@ function textMessages() {
 
                   if (userExist) {
 
-                    addFire.newSender(msg.text, sender)
-                    addFire.sender(msg.text, sender)
+                    addFire.newSender(msg.text)
+                    addFire.sender(msg.text)
                     addFire.active(msg.text)
-                    // senderMsg.send(sender, {text: 'Olá Gostaria'})
-                    senderMsg.send(sender, quickAction.handler('maintenanceOrStatus'))
+                    senderMsg.send(sender, {text: `Olá ${userExist.first_name}, experimente digitar 'Manutenção' ou acesse o menu abaixo no lado esquerdo`})
 
                   }else{
-
                     senderMsg.send(sender, {text: 'Não consegui encontrar esse telefone no nosso banco de dados'})
-
                   }
 
                 })

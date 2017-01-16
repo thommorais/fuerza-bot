@@ -25,7 +25,7 @@ function database(){
 
   }
 
-  this.sender = (user, sender) =>{
+  this.sender = (user) =>{
 
     let path = `users/${user}/sender`
 
@@ -34,7 +34,7 @@ function database(){
   }
 
 
-  this.newSender = (user, sender) =>{
+  this.newSender = (user) =>{
 
     let path = `indexes/${sender}`
 
@@ -44,7 +44,7 @@ function database(){
 
 
 
-  this.newMaintenance = (sender, title, description) =>{
+  this.newMaintenance = (title, description) =>{
 
     let path = `maintenances/${sender}/${stamp}`,
     data = {
@@ -54,11 +54,9 @@ function database(){
       status : 'Ainda não visualizado'
     }
 
-
     add(path,data)
 
   }
-
 
   this.justForTest = (number) => {
 

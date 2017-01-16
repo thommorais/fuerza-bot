@@ -63,17 +63,23 @@ function getDatabase() {
             let object = snap.val(),
                 maintenance = {}
 
-            Object.keys(object).forEach((key) => {
+              if(object != null){
 
-              if (object[key].status != 'atendido') {
+                Object.keys(object).forEach((key) => {
 
-                maintenance.maintenance = object
+                  if(object[key].status != 'atendido')
+                    maintenance.maintenance = object
+
+                })
+
+                return maintenance
+
               }
+              else{
 
-            })
+                return false
 
-            return maintenance
-
+              }
         })
 
       }
