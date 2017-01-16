@@ -2,7 +2,7 @@ function quickReplies() {
     'use strict'
 
     // this function is to add users
-    this.handleAction = function(what, user) {
+    this.handler = function(what, user) {
 
         let text = {}
 

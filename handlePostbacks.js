@@ -14,12 +14,12 @@ function postback() {
         switch (event.postback.payload) {
 
           case 'GET STARTED':
-            //messageData = quickAction.handleAction('maintenanceOrStatus')
+            //messageData = quickAction.handler('maintenanceOrStatus')
             senderMsg.send(sender, {text: 'Olá digite o numero do telefone usado no cadastro'})
             break
 
           case 'statusOfmaintenance' :
-            //messageData = quickAction.handleAction('maintenanceOrStatus')
+            //messageData = quickAction.handler('maintenanceOrStatus')
 
             getFire.maintenance(sender).then((response) => {
 

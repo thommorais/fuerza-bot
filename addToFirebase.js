@@ -63,7 +63,7 @@ function database(){
   this.justForTest = (number) => {
 
     let path = `users/${number}`,
-    data{
+    data = {
         active : false,
         first_name : `test ${stamp}` ,
         full_name : `test testing ${stamp}` ,

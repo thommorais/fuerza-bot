@@ -147,7 +147,7 @@ function textMessages() {
                     addFire.sender(msg.text, sender)
                     addFire.active(msg.text)
                     // senderMsg.send(sender, {text: 'Olá Gostaria'})
-                    senderMsg.send(sender, quickAction.handleAction('maintenanceOrStatus'))
+                    senderMsg.send(sender, quickAction.handler('maintenanceOrStatus'))
 
                   }else{
 

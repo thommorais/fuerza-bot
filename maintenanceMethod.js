@@ -35,7 +35,7 @@ let response = `${maintenanceObject.title}
                 ${maintenanceObject.description}`
 
   //      senderMsg.send(sender,{text: response})
-//        senderMsg.send(sender, quickAction.handleAction('sendMaintenanceRequest'))
+//        senderMsg.send(sender, quickAction.handler('sendMaintenanceRequest'))
 
         addFire.newMaintenance(sender, maintenanceObject.title, maintenanceObject.description)
         senderMsg.send(sender,{text: 'Manutenção solicitada :)'})
