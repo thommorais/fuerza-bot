@@ -8,7 +8,7 @@ function textPostback() {
 
 
 
-    this.postbackHandler = (event) => {
+    this.handler = (event) => {
 
         switch (event.postback.payload) {
 

@@ -6,7 +6,7 @@ function attachments() {
         senderMsg    = new senderFile()
 
     // handle attachments (images, location, ...)
-    this.handleAttachments = (attachment, sender) => {
+    this.handler = (attachment, sender) => {
 
         switch (attachment.type) {
 

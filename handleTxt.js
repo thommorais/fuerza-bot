@@ -112,7 +112,7 @@ function textMessages() {
     }
 
     // validate user
-    this.handleMessage = (event, sender) => {
+    this.handler = (event, sender) => {
 
         let messageData = {},
             msg = event.message

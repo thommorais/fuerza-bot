@@ -36,15 +36,15 @@ function messenger() {
                     if (!event.message.is_echo) {
 
                       if (event.message.attachments)
-                          attachment.handleAttachments(event.message.attachments[0], sender)
+                          attachment.handler(event.message.attachments[0], sender)
                       else
-                          txt.handleMessage(event, sender)
+                          txt.handler(event, sender)
 
                     }
 
                     // if is postback
                 } else if (event.postback) {
-                  postbacker.postbackHandler(event)
+                  postbacker.handler(event)
                 }
             }
         }
