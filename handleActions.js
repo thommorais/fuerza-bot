@@ -42,6 +42,24 @@ function quickReplies() {
               }
               break
 
+          case 'sendMaintenanceRequest':
+                text = {
+                    text: 'Gostaria de alterar alguma coisa?',
+
+                    quick_replies: [{
+                            content_type: 'text',
+                            title: 'Não, quero enviar!',
+                            payload: 'sendMaintenanance'
+                        },
+                        {
+                            content_type: 'text',
+                            title: 'Sim, vou alterar!',
+                            payload: 'editMaintenanance'
+                        }
+                    ]
+                }
+              break
+
             default:
                 text = {
                     text: 'Algo deu errado?',

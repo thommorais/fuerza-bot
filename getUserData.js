@@ -21,9 +21,9 @@ function getUserData(){
 
     rp(options)
         .then(function (response) {
-          userInfo    = response
+          userInfo = response
         }) .catch(function (err) {
-          userInfo    = err
+          userInfo = err
         })
 
         return userInfo

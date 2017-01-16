@@ -15,7 +15,8 @@
     "firebase": "^3.6.5",
     "firebase-admin": "^4.0.4",
     "request": "^2.75.0",
-    "request-promise": "^4.1.1"
+    "request-promise": "^4.1.1",
+    "unsplash-js": "^4.4.0"
   },
   "repository": {
     "type": "git",

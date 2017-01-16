@@ -4,7 +4,7 @@ function messenger() {
 
     let
         attachments = require('./handleAttachments'),
-        postbacks   = require('./handlePostBack'),
+        postbacks   = require('./handlePostback'),
         textMessage = require('./handleTxt'),
         buttons     = require('./handleActions'),
         senderFile  = require('./sender'),
@@ -27,8 +27,9 @@ function messenger() {
 
             for (let i = 0; i < messaging_events.length; i++) {
 
-                let event = req.body.entry[0].messaging[i],
+                let event = req.body.entry[0].messaging[i]
                     sender = event.sender.id
+                    stamp = event.timestamp
 
                 // if user send a message
                 if (event.message) {

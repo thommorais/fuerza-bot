@@ -44,6 +44,22 @@ function database(){
 
 
 
+  this.newMaintenance = (sender, title, description) =>{
+
+    let path = `maintenances/${sender}/${stamp}`,
+    data = {
+      title : title,
+      description : description,
+      id : stamp,
+      status : 'open'
+    }
+
+
+    add(path,data)
+
+  }
+
+
 }
 
 module.exports = database

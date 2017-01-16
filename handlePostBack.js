@@ -1,9 +1,10 @@
 function textPostback() {
     'use strict'
 
-    let messageData,
-        senderFile   = require('./sender'),
-        senderMsg    = new senderFile()
+    let senderFile   = require('./sender'),
+        getFireFile  = require('./getFromFirebase'),
+        senderMsg    = new senderFile(),
+        getFire      = new getFireFile()
 
     this.handlePostback = (event, sender) => {
 
@@ -11,18 +12,63 @@ function textPostback() {
 
           case 'GET STARTED':
             //messageData = quickAction.handleAction('maintenanceOrStatus')
-            messageData = {text: 'Olá, digite o celular usado no cadastro.'}
+            senderMsg.send(sender, {text: 'Olá digite o numero do telefone usado no cadastro'})
+            break
+
+          case 'statusOfmaintenance' :
+            //messageData = quickAction.handleAction('maintenanceOrStatus')
+
+            getFire.maintenance(sender).then((response) =>{
+
+              let messageData = {
+                    message: {
+                        attachment: {
+                          type: "template",
+                          payload: {
+                            template_type: "generic",
+                            elements: []
+                          }
+                        }
+                    }
+                  }
+
+              Object.keys(response.maintenance).forEach((key) => {
+
+                messageData.message.attachment.payload.elements.push({
+                      title: response.maintenance[key].title,
+                      subtitle: response.maintenance[key].description,
+                      // item_url: "https://www.oculus.com/en-us/rift/",
+                      // image_url: "http://messengerdemo.parseapp.com/img/rift.png",
+                      buttons: [{
+                        type: 'postback',
+                        title: 'Ver andamento',
+                        payload: response.maintenance[key].id
+                      }]
+                })
+
+              })
+
+              senderMsg.send(sender, messageData.message)
+
+            })
+
+            break
+
+          case 'maintenance' :
+            senderMsg.send(sender, {text: 'No que você gostaria de realizar a manutenção? (Ex: porta, janela, torneira, etc.)'})
+            maintenanceMode = true
             break
 
           default:
-            messageData = {
-              text: 'O que você clicou? Não reconheço essa ação.'
-            }
+
+            getFire.maintenanceStatus(event.postback.payload).then((response) =>{
+              
+              senderMsg.send(sender,{text: response.status})
+            })
+
+            break
 
         }
-
-        // send the result
-        senderMsg.send(sender, messageData)
 
     }
 

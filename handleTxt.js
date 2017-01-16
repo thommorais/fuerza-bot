@@ -7,14 +7,15 @@ function textMessages() {
         validator   = require('./validate'),
         buttons     = require('./handleActions'),
         menus       = require('./menu'),
+        maintenanceMethod = require('./maintenanceMethod'),
 
         senderMsg   = new senderFile(),
         getFire     = new getFireFile(),
         addFire     = new addFireFile(),
         validate    = new validator(),
         show        = new menus(),
-        quickAction = new buttons()
-
+        quickAction = new buttons(),
+        maintenance = new maintenanceMethod()
 
 
     let switcher = (msg, sender) => {
@@ -24,18 +25,48 @@ function textMessages() {
             switch (msg.quick_reply.payload) {
 
                 case 'getMaintenance':
-
-                    senderMsg.send(sender, {text: 'Procurar apartamento vinculado ao usuário por telefone'})
-
+                      senderMsg.send(sender, {text: 'No que você gostaria de realizar a manutenção? (Ex: porta, janela, torneira, etc.)'})
+                      maintenanceMode = true
                     break
 
                 case 'getStatus':
+                      getFire.maintenance(sender).then((response) =>{
 
-                    senderMsg.send(sender, {text: 'Ver Status'})
+                        let messageData = {
+                              message: {
+                                  attachment: {
+                                    type: "template",
+                                    payload: {
+                                      template_type: "generic",
+                                      elements: []
+                                    }
+                                  }
+                              }
+                            }
+
+                        Object.keys(response.maintenance).forEach((key) => {
+
+                          messageData.message.attachment.payload.elements.push({
+                                title: response.maintenance[key].title,
+                                subtitle: response.maintenance[key].description,
+                                item_url: 'http://images.locanto.ae/1162282060/Home-and-Building-Maintenance-Service-and-we-take-yearly-contrac_3.jpg',
+                                image_url: 'http://images.locanto.ae/1162282060/Home-and-Building-Maintenance-Service-and-we-take-yearly-contrac_3.jpg',
+                                buttons: [{
+                                  type: 'postback',
+                                  title: 'Ver andamento',
+                                  payload: response.maintenance[key].stamp,
+                                }]
+                          })
+
+                        })
+
+                        senderMsg.send(sender, messageData.message)
+
+                      })
                     break
 
                 default:
-                      senderMsg.send(sender, {text: 'Ver Status'})
+                    senderMsg.send(sender, {text: 'Ver Status'})
                     break
 
             }
@@ -44,22 +75,36 @@ function textMessages() {
 
         if (msg.text) {
 
-          senderMsg.send(sender, {
-            text: '💪'
-          })
-
-
-          switch (msg.text) {
-
-            case 'menu':
-              show.menu()
-              break;
-
-            default:
-            senderMsg.send(sender, {text: 'Ver Status'})
-
+          if(maintenanceMode){
+            maintenance.request(msg.text)
           }
 
+          else{
+              switch (msg.text.toLowerCase()) {
+
+              case 'menu':
+                show.menu()
+                break;
+
+              case 'manutenção' :
+                senderMsg.send(sender, {text: 'No que você gostaria de realizar a manutenção? (Ex: porta, janela, torneira, etc.)'})
+                maintenanceMode = true
+                break
+
+              case 'status' :
+                senderMsg.send(sender, {text: msg.text})
+                break
+
+              case 'andamento' :
+                senderMsg.send(sender, {text: msg.text})
+                break
+
+              default:
+                senderMsg.send(sender, {text: 'Ooops, não entendi isso, tente o menu ;)'})
+                break
+
+            }
+          }
 
 
         }
@@ -88,8 +133,7 @@ function textMessages() {
                     addFire.newSender(msg.text, sender)
                     addFire.sender(msg.text, sender)
                     addFire.active(msg.text)
-                    senderMsg.send(sender, {text: '👍'})
-
+                    // senderMsg.send(sender, {text: 'Olá Gostaria'})
                     senderMsg.send(sender, quickAction.handleAction('maintenanceOrStatus'))
 
                   }else{

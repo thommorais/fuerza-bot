@@ -24,7 +24,7 @@ function attachments() {
 
         // send the result
         senderMsg.send(sender, messageData)
-        
+
     }
 
 }
