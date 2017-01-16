@@ -17,9 +17,37 @@
     </head>
 
     <body id="home">
-    </body>
-    <script src="https://www.gstatic.com/firebasejs/3.0.4/firebase.js"></script>
 
-    <script src="public/scripts.min.js"></script>
+      <pre id="firebase"></pre>
+
+    </body>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+
+    <script>
+    (function(){
+
+        const config = {
+          apiKey: "AIzaSyAQB-SlAb9hmGTz9j1agLWogQkrbz-OvYw",
+          authDomain: "fuerza-lab.firebaseapp.com",
+          databaseURL: "https://fuerza-lab.firebaseio.com",
+          storageBucket: "fuerza-lab.appspot.com"
+        }
+
+        firebase.initializeApp(config)
+
+        const pre = document.querySelector('#firebase')
+
+        // Get a reference to the database service
+        const database = firebase.database(),
+              users = database.ref('users'),
+              maintenances = database.ref('maintenances')
+
+        maintenances.on('value', snap =>{
+          pre.innerText = JSON.stringify(snap.val(), null, 2)
+        })
+
+    }())
+
+    </script>
 
 </html>
