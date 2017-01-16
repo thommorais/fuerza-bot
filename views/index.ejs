@@ -1,121 +1,24 @@
-<%- include header-home %>
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7 loading"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie10 lt-ie9 lt-ie8 loading"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie10 lt-ie9 loading"> <![endif]-->
+<!--[if IE 9]><html class="no-js lt-ie10 loading"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js loading"> <!--<![endif]-->
+    <head>
+    <meta charset="utf-8">
 
-    <main role="home" id="wrap">
-      <%- include menu %>
-      <div class="sections-home">
-        <section id="portfolio" class="section">
+    <title>
+      Teste
+    </title>
 
-        <div class="thumbs">
-          <div class="thumb portfolio-type-title">
-              <span><small>ux</small> design</span>
-          </div>
-          <div class="thumb">
-            <a href="casa-decorativa" title="Casa Decorativa">
-              <img src="https://d13yacurqjgara.cloudfront.net/users/40433/screenshots/3009727/dr_1x.png">
-            </a>
-          </div>
-          <div class="thumb">
-            <a href="babies-buh" title="Babies Buh!">
-              <img src="https://d13yacurqjgara.cloudfront.net/users/40433/screenshots/3009727/dr_1x.png">
-            </a>
-          </div>
-          <div class="thumb">
-            <a href="#" title="Teste">
-              <img src="https://d13yacurqjgara.cloudfront.net/users/40433/screenshots/3009727/dr_1x.png">
-            </a>
-          </div>
-        </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,500,600,700|Fira+Mono:400,700" rel="stylesheet">
+    <link href="public/style.css" rel="stylesheet">
 
-        <div class="thumbs">
-          <div class="thumb">
-            <a href="#" title="Teste">
-              <img src="https://d13yacurqjgara.cloudfront.net/users/40433/screenshots/3009727/dr_1x.png">
-            </a>
-          </div>
-          <div class="thumb">
-            <a href="#" title="Teste">
-              <img src="https://d13yacurqjgara.cloudfront.net/users/40433/screenshots/3009727/dr_1x.png">
-            </a>
-          </div>
-          <div class="thumb">
-            <a href="#" title="Teste">
-              <img src="https://d13yacurqjgara.cloudfront.net/users/40433/screenshots/3009727/dr_1x.png">
-            </a>
-          </div>
-          <div class="thumb portfolio-type-title">
-            <span>branding</span>
-          </div>
-        </div>
+    </head>
 
-      </section>
+    <body id="home">
+    </body>
 
-        <section id="sobre" class="section dark">
-
-        <div class="wrp">
-          <article>
-            <h2>mnstrs are real</h2>
-              Criamos trabalhos de comunicação integrada, regados à café preto com impacto positivo sobre os negócios das marcas.
-              Nossa processo envolve o cliente como parceiro estratégico, co-criação eficaz e projetos relevantes para todas as frentes de contato.
-              Somos entusiastas e experimentalistas. O comodismo nos incomoda. Trazer resultados para nossos clientes é questão pessoal e não poupamos esforços.
-          </article>
-          <div class="ones">
-            <div class="one">
-                <a href="#">
-                  <img src="assets/images/claudio-fantasty-interactive.jpg" />
-                  <h3 data-text="Adolfo">Adolfo</h3>
-                </a>
-            </div>
-            <div class="one">
-                <a href="#">
-                  <img src="assets/images/claudio-fantasty-interactive.jpg" />
-                  <h3 data-text="Tais">Tais</h3>
-                </a>
-            </div>
-            <div class="one">
-                <a href="#">
-                  <img src="assets/images/claudio-fantasty-interactive.jpg" />
-                  <h3 data-text="Thom">Thom</h3>
-                </a>
-            </div>
-          </div>
-        </div>
-
-      </section>
-
-        <section id="contato" class="section ">
-        <div class="bars">
-          <% for(var i = 0; i < 20; i++) {
-            var x = Math.floor((Math.random() * 20) + 1);
-          %>
-            <i class="bar b<%= x %>"></i>
-          <% } %>
-        </div>
-        <form class="form" autofill>
-
-          <div class="field">
-            <label for="text">Nome</label>
-            <input type="text" id="text" name="nome" autocomplete="on" />
-          </div>
-
-          <div class="field">
-            <label for="email">Email</label>
-            <input type="email" name="email" autocomplete="on" autofill id="email" />
-          </div>
-
-          <div class="field messenger">
-            <label for="text">Mensagem</label>
-            <textarea id="mensagem" name="mensagem"></textarea>
-          </div>
-
-          <button type="submit">enviar<span class="typed-cursor">_</span></button>
-
-
-          <a href="mailto:call@mnstrs.tech" class="link-to-email">
-            <strong>call</strong>@mnstrs.tech
-          </a>
-        </form>
-
-      </section>
-      </div>
-  </main>
-  <%- include footer %>
+    <script src="public/scripts.min.js"></script>
+</html>
