@@ -12,8 +12,7 @@
     </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,500,600,700|Fira+Mono:400,700" rel="stylesheet">
-    <link href="public/style.css" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Poppins:300,500,600,700|Fira+Mono:400,700" rel="stylesheet"> -->
 
     </head>
 
@@ -34,9 +33,9 @@
       // Get a reference to the database service
       var database = firebase.database()
 
-      var starCountRef = database.ref('users')
+      var users = database.ref('users')
 
-      starCountRef.on('value', function(snapshot) {
+      users.on('value', function(snapshot) {
         console.log(snapshot.val())
       })
 
