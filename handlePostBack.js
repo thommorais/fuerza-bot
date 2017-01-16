@@ -62,10 +62,11 @@ function textPostback() {
             break
 
           default:
-            getFire.maintenanceStatus(event.postback.payload).then((response) => {
-              console.log(response)
-              senderMsg.send(sender, response.message)
-            })
+            console.log('hey')
+            // getFire.maintenanceStatus(event.postback.payload).then((response) => {
+            //   console.log(response)
+            //   senderMsg.send(sender, response.message)
+            // })
             break
 
         }
