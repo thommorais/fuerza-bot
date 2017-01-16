@@ -16,6 +16,7 @@ fire = admin.initializeApp({
 maintenanceMode = false
 sender = ''
 stamp = ''
+testing = ''
 
 app.use(bodyParser.json())
 

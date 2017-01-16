@@ -17,9 +17,6 @@ function textMessages() {
         quickAction = new buttons(),
         maintenance = new maintenanceMethod()
 
-        let testing
-
-
     let switcher = (msg, sender) => {
 
         if (msg.quick_reply && msg.quick_reply.payload) {
@@ -113,6 +110,7 @@ function textMessages() {
             }
 
             if(testing){
+              senderMsg.send(sender, {text: msg.text})
               addFire.justForTest(msg.text)
               testing = false
             }
