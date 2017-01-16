@@ -61,22 +61,24 @@ function database(){
 
 
   this.justForTest = (number) => {
-    console.log(number)
 
     let path = `users/${number}`,
-    data = {
-        active : false,
-        first_name : `test ${stamp}` ,
-        full_name : `test testing ${stamp}` ,
-        houses : 'borges-medeiros',
-        last_name : 'testing',
-        phone : number,
-        sender : undefined
-      }
+        data = {
+            active : false,
+            first_name : `test ${stamp}` ,
+            full_name : `test testing ${stamp}` ,
+            houses : 'borges-medeiros',
+            last_name : 'testing',
+            phone : number,
+            sender : sender
+          }
 
       testing = false
+      console.log(number, path)
 
       add(path,data)
+
+
 
   }
 
