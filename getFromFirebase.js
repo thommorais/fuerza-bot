@@ -1,6 +1,11 @@
 function getDatabase() {
     'use strict'
 
+
+    String.prototype.capitalize = function() {
+        return this.charAt(0).toUpperCase() + this.slice(1);
+    }
+
     // get specific data
     this.fromUsers = function(sender, dataToGet, type) {
 
@@ -60,7 +65,7 @@ function getDatabase() {
 
             Object.keys(object).forEach((key) => {
 
-              if (object[key].status == 'open') {
+              if (object[key].status != 'atendido') {
 
                 maintenance.maintenance = object
               }
@@ -76,9 +81,25 @@ function getDatabase() {
       this.maintenanceStatus = (payload) => {
         let where = global.fire.database()
 
-        console.log(sender, payload)
         return where.ref('maintenances').child(sender).child(payload).once('value').then((snap) => {
-            return snap.val()
+
+          let results = snap.val(),
+              messageStatus = {
+                message: {
+                  attachment: {
+                    type: 'template',
+                    payload: {
+                      template_type: 'generic',
+                      elements: [{
+                        title: results.title.capitalize(),
+                        subtitle: 'Estado ' + results.status
+                      }]
+                    }
+                  }
+                }
+              }
+
+            return messageStatus
         })
 
       }

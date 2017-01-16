@@ -51,7 +51,7 @@ function database(){
       title : title,
       description : description,
       id : stamp,
-      status : 'open'
+      status : 'Ainda não visualizado'
     }
 
 

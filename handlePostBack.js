@@ -6,6 +6,8 @@ function textPostback() {
         senderMsg    = new senderFile(),
         getFire      = new getFireFile()
 
+
+
     this.handlePostback = (event, sender) => {
 
         switch (event.postback.payload) {
@@ -60,12 +62,10 @@ function textPostback() {
             break
 
           default:
-
-            getFire.maintenanceStatus(event.postback.payload).then((response) =>{
-              
-              senderMsg.send(sender,{text: response.status})
+            getFire.maintenanceStatus(event.postback.payload).then((response) => {
+              console.log(response)
+              senderMsg.send(sender, response.message)
             })
-
             break
 
         }
