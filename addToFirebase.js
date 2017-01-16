@@ -71,13 +71,9 @@ function database(){
             sender : sender
           }
 
-      testing = false
-      console.log(number, path)
-
       add(path,data)
 
-
-
+    testing = false
   }
 
 

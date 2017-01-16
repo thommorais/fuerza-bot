@@ -16,7 +16,7 @@ fire = admin.initializeApp({
 maintenanceMode = false
 sender = ''
 stamp = ''
-testing = ''
+testing = false
 
 // set the view engine to ejs
 app.set('view engine', 'ejs')
