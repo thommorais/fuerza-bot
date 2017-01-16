@@ -1,5 +1,6 @@
+'use strict'
+
 function textPostback() {
-    'use strict'
 
     let senderFile   = require('./sender'),
         getFireFile  = require('./getFromFirebase'),
