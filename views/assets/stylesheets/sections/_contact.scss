@@ -1,0 +1,98 @@
+#contato{
+  position: relative;
+  min-height: 100vh;
+  background: $CL;
+
+  .bar{
+    z-index: 2;
+    position: fixed;
+    display: block;
+    opacity: random(100) / 100;
+    background: $BG;
+
+    &:before{
+      position: absolute;
+      content: "";
+      z-index: 1;
+      opacity: random(100) / 100;
+      background: $BG;
+  }
+ }
+
+  form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    max-width: 600px;
+    padding: 0 10px;
+    @include transform (translate(-50%, -50%));
+
+    .field{
+      position: relative;
+      margin-bottom: $grid-unit * 3;
+
+      &.focus{
+          label{
+            font-size: em(12px);
+            @include transform (translate(-100%, -30%));
+
+          }
+
+      }
+
+      &.messenger{
+        label{
+          position: relative;
+          top: 0;
+          @include transform (translate(0, 0));
+        }
+      }
+
+    }
+
+    label{
+      position: absolute;
+      top: 50%;
+      font-size: em(18px);
+      font-weight: bold;
+      @include transform (translate(0, -50%));
+      @include transition(all .2s linear);
+    }
+
+    input{
+      background: none;
+      border:0;
+      border-bottom: 2px dotted $BG;
+    }
+
+    textarea{
+      min-height: 120px;
+      border: 2px dotted $BG;
+      background: none;
+    }
+
+    button{
+      float: right;
+      padding: 0.4em 1em;
+      border: 0;
+      background: $BG;
+      color: white;
+      font-family: 'Fira Mono', monospace;
+      letter-spacing: 1px;
+      font-size: em(18px);
+      outline: none;
+    }
+
+  }
+
+  .link-to-email{
+    position: relative;
+    top: 3.5em;
+    display: block;
+    text-align: center;
+    clear: both;
+    font-size: em(42px);
+  }
+
+}

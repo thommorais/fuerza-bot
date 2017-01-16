@@ -1,0 +1,80 @@
+/*********************************************************************
+*  =Helpers
+*
+*  Placeholders que facilitam a nossa vida.
+*********************************************************************/
+
+/*********************************************************************
+*  =Clearfix
+*********************************************************************/
+%clearfix {
+  &:after {
+    clear: both;
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    visibility: hidden;
+  }
+
+  zoom: 1;
+}
+
+/*********************************************************************
+*  =Image replacement
+*********************************************************************/
+%image_replacement {
+  text-indent: 101%;
+  overflow: hidden;
+  white-space: nowrap;
+  display: block
+}
+
+
+/*********************************************************************
+*  =No underline
+*********************************************************************/
+%no_underline {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+
+/*********************************************************************
+*  =Ellipsis
+*********************************************************************/
+%ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/*********************************************************************
+*  =Pseudo Icon
+*********************************************************************/
+ %pseudo_icon {
+  content: " ";
+  display: inline-block;
+  position: absolute;
+ }
+/*********************************************************************
+*  =Shadow Before
+*********************************************************************/
+
+ %before_shadow {
+    &:before{
+        position: absolute;
+        left: 4%;
+        bottom: -15px;
+        z-index: -2;
+        content: '';
+        width: 92%;
+        height: 65px;
+        background: #adb6c4;
+        @include filter(blur(4px));
+        @include border-radius(50%);
+    }
+ }

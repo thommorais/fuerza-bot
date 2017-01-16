@@ -1,0 +1,13 @@
+/*********************************************************************
+*  =Core » Icons
+*********************************************************************/
+
+ //$icon_sprite: sprite-map("icons/*.png", $spacing: 18px, $repeat: no-repeat, $layout: vertical);
+ //$icon_retina: sprite-map("spriteRetina/*.png", $spacing: 18px, $repeat: no-repeat, $layout: vertical);
+
+svg path {
+    fill: inherit;
+}
+.hidden{
+  display: none;
+}

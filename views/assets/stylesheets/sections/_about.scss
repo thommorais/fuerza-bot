@@ -1,0 +1,111 @@
+// .one img{
+//   mix-blend-mode: multiply;
+// }
+
+#sobre{
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+
+   &:before{
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: .2;
+    background-color: $BG;
+    background-image: url(/assets/images/noise.gif);
+    background-blend-mode: multiply;
+  }
+
+  .wrp{
+    position: relative;
+    width: 98vw;
+    max-width: 1900px;
+    margin: 0 auto;
+  }
+
+  article{
+    position: relative;
+    z-index: 2;
+    margin: 15vh auto 15vh;
+    max-width: 640px;
+    font-size: em(15px);
+
+    h2{
+      position: relative;
+      font-weight: 700;
+    }
+  }
+
+}
+
+.ones{
+  position: relative;
+  margin-bottom: 5vh;
+  font-size: 0;
+
+  &:after{
+    position: absolute;
+    left: 50.5%;
+    top: -12vh;
+    width: 1px;
+    height: 0;
+    background: $TR;
+    content: "";
+    @include transition(all .5s linear);
+  }
+
+
+
+}
+
+.actual{
+  .ones:after {height: 10vh;}
+}
+
+.one{
+  position: relative;
+  width: 24%;
+  margin: 0 2%;
+  font-size: $PROJECT_FONT_SIZE;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+
+  a{
+    color: inherit;
+    &:hover{
+        letter-spacing: 5px;
+        color: $TR;
+      }
+  }
+
+  img{
+    width: 100%;
+    mix-blend-mode: multiply;
+  }
+
+  h3{
+    position: absolute;
+    margin: 0;
+    bottom: ($grid-unit * 5);
+    left: ($grid-unit * 5);
+    font-weight: 300;
+    @include transition(all 2s cubic-bezier(.25, 1.46, .02, 1.34));
+  }
+
+  &:hover {
+    img{
+      animation: noise-3 1s cubic-bezier(.58,-0.21,.37,.94) infinite;
+    }
+  }
+
+  &:last-child:hover{
+    img{
+      animation: noise-3 2s cubic-bezier(.58,-0.21,.37,.94) infinite;
+    }
+  }
+}

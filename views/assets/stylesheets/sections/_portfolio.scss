@@ -1,0 +1,59 @@
+#portfolio{
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.thumbs{
+  margin-bottom: 4vh;
+  width: 100%;
+  display: table;
+
+  &:first-child{
+    margin-top: 30vh;
+    .thumb.portfolio-type-title span:before{
+      left: 0;
+      right: auto !important;
+    }
+  }
+
+  .thumb{
+    position: relative;
+    display: table-cell;
+    width: 25vw;
+    height: auto;
+    vertical-align: middle;
+    text-align: center;
+
+    img{
+      width: 100%;
+      height: auto;
+    }
+
+    &.portfolio-type-title{
+      position: relative;
+      overflow: hidden;
+
+      span{
+        position: relative;
+        font-size: em(31px);
+        font-weight: 600;
+
+        small{
+            font-weight: 300;
+        }
+
+        &:before{
+          position: absolute;
+          top: 50%;
+          right: 0;
+          margin-top: 3px;
+          height: 2px;
+          width: 25vw;
+          content:"";
+          background-color: $TR;
+        }
+      }
+    }
+
+  }
+}
