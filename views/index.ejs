@@ -16,7 +16,58 @@
 
     </head>
 
+
     <body id="home">
+
+      <svg>
+        <symbol id="lupe" viewBox="302 50 420 40">
+              <defs>
+                  <rect id="path-1" x="302" y="50" width="420" height="40" rx="20"></rect>
+                  <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="420" height="40" fill="white">
+                      <use xlink:href="#path-1"></use>
+                  </mask>
+              </defs>
+              <g id="Rectangle" stroke="none" fill="none">
+                  <use fill-opacity="0.198596014" fill="#798DE2" fill-rule="evenodd" style="mix-blend-mode: multiply;" xlink:href="#path-1"></use>
+                  <use stroke-opacity="0.17224298" stroke="#FFFFFF" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+              </g>
+        </symbol>
+
+        <symbol id="alarm" viewBox="19 160 985 360">
+          <defs>
+              <rect id="path-1" x="20" y="160" width="984" height="358" rx="4"></rect>
+              <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+                  <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                  <feColorMatrix values="0 0 0 0 0.784313725   0 0 0 0 0.882352941   0 0 0 0 0.945098039  0 0 0 1 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+              </filter>
+          </defs>
+          <g id="Rectangle" stroke="none" fill="none">
+              <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+              <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+          </g>
+        </symbol>
+      </svg>
+
+
+
+      <header>
+        <h2>Olá, João.</h2>
+
+        <form>
+          <input type="search" name="s" />
+          <button type="submit"></button>
+        </form>
+
+      </header>
+
+      <section>
+        <article></article>
+        <article></article>
+        <article></article>
+        <article></article>
+      </section>
+
+
 
       <pre id="firebase"></pre>
 
