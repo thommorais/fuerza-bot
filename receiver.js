@@ -9,7 +9,7 @@ function messenger() {
         senderFile  = require('./sender'),
 
         attachment  = new attachments(),
-        postback    = new postbacks(),
+        //postback    = new postbacks(),
         txt         = new textMessage(),
         quickAction = new buttons(),
         senderMsg   = new senderFile(),
