@@ -2,8 +2,7 @@ function messenger() {
 
     'use strict'
 
-    let
-        attachments = require('./handleAttachments'),
+    let attachments = require('./handleAttachments'),
         postbacks   = require('./handlePostback'),
         textMessage = require('./handleTxt'),
         buttons     = require('./handleActions'),
