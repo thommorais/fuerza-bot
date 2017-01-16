@@ -22,10 +22,10 @@ testing = ''
 app.set('view engine', 'ejs')
 
 // index page
+
 app.get('/', function(req, res) {
   res.render('index')
-});
-
+})
 
 
 app.use(bodyParser.json())

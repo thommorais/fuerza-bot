@@ -20,5 +20,25 @@
     <body id="home">
     </body>
 
-    <script src="public/scripts.min.js"></script>
+    <script>
+
+      var config = {
+        apiKey: "AIzaSyAQB-SlAb9hmGTz9j1agLWogQkrbz-OvYw",
+        authDomain: "fuerza-lab.firebaseapp.com",
+        databaseURL: "https://fuerza-lab.firebaseio.com",
+        storageBucket: "fuerza-lab.appspot.com"
+      }
+
+      firebase.initializeApp(config)
+
+      // Get a reference to the database service
+      var database = firebase.database()
+
+      var starCountRef = database.ref('users')
+
+      starCountRef.on('value', function(snapshot) {
+        console.log(snapshot.val())
+      })
+
+    </script>
 </html>
