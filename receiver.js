@@ -3,7 +3,7 @@ function messenger() {
     'use strict'
 
     let attachments = require('./handleAttachments'),
-        postbacks   = require('./handlePostback'),
+        postbacks   = require('./seriomesmo'),
         textMessage = require('./handleTxt'),
         buttons     = require('./handleActions'),
         senderFile  = require('./sender'),

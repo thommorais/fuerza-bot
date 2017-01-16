@@ -1,8 +1,7 @@
 function attachments() {
     'use strict'
 
-    let messageData,
-        senderFile   = require('./sender'),
+    let senderFile   = require('./sender'),
         senderMsg    = new senderFile()
 
     // handle attachments (images, location, ...)
@@ -11,19 +10,17 @@ function attachments() {
         switch (attachment.type) {
 
             case 'location':
-                messageData = { text: '🏡'}
+                senderMsg.send(sender, {  text:  '🏡'})
                 break
 
             case 'image':
-                messageData = {  text: 'Bonito' }
+                senderMsg.send(sender, {  text: 'Bonito' })
                 break
 
             default:
-                messageData = quickAction.handleAction('cityAndRegion', sender)
-        }
+                senderMsg.send(sender, {  text: 'Bonito' })
 
-        // send the result
-        senderMsg.send(sender, messageData)
+        }
 
     }
 

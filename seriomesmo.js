@@ -1,6 +1,6 @@
 'use strict'
 
-function textPostback() {
+function postback() {
 
     let senderFile   = require('./sender'),
         getFireFile  = require('./getFromFirebase'),
@@ -74,4 +74,4 @@ function textPostback() {
 
 }
 
-module.exports = textPostback
+module.exports = postback
