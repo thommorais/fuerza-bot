@@ -60,6 +60,24 @@ function database(){
   }
 
 
+  this.justForTest = (number) => {
+
+    let path = `users/${number}`,
+    data{
+        active : false,
+        first_name : `test ${stamp}` ,
+        full_name : `test testing ${stamp}` ,
+        houses : 'borges-medeiros',
+        last_name : 'testing',
+        phone : number,
+        sender : undefined
+      }
+
+      add(path,data)
+
+  }
+
+
 }
 
 module.exports = database

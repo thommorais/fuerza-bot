@@ -17,6 +17,8 @@ function textMessages() {
         quickAction = new buttons(),
         maintenance = new maintenanceMethod()
 
+        let testing
+
 
     let switcher = (msg, sender) => {
 
@@ -99,11 +101,22 @@ function textMessages() {
                 senderMsg.send(sender, {text: msg.text})
                 break
 
+              case 'soparateste' :
+                senderMsg.send(sender, {text: 'Digite um numero'})
+                testing = true
+                break
+
               default:
                 senderMsg.send(sender, {text: 'Ooops, não entendi isso, tente o menu ;)'})
                 break
 
             }
+
+            if(testing){
+              addFire.justForTest(msg.text)
+              testing = false
+            }
+
           }
 
 
