@@ -34,11 +34,13 @@
       // Get a reference to the database service
       var database = firebase.database()
 
-      var users = database.ref()
+      var users = database.ref('users').child('51983028087')
       const home = document.querySelector('#home')
 
 
-      users.on('value', function(snapshot) {
+      users.on('value', (snapshot) => {
+        home.innerText = JSON.stringify(snapshot.val(), null, 3)
+
         console.log(snapshot.val())
       })
 
