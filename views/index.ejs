@@ -12,37 +12,119 @@
     </title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link href="https://fonts.googleapis.com/css?family=Poppins:300,500,600,700|Fira+Mono:400,700" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600" rel="stylesheet">
+    <link href="public/style.css" rel="stylesheet" />
 
     </head>
 
+
     <body id="home">
+
+      <svg class="hidden">
+        <symbol id="lupe" viewBox="302 50 420 40">
+              <defs>
+                  <rect id="path-1" x="302" y="50" width="420" height="40" rx="20"></rect>
+                  <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="420" height="40" fill="white">
+                      <use xlink:href="#path-1"></use>
+                  </mask>
+              </defs>
+              <g id="Rectangle" stroke="none" fill="none">
+                  <use fill-opacity="0.198596014" fill="#798DE2" fill-rule="evenodd" style="mix-blend-mode: multiply;" xlink:href="#path-1"></use>
+                  <use stroke-opacity="0.17224298" stroke="#FFFFFF" mask="url(#mask-2)" stroke-width="2" xlink:href="#path-1"></use>
+              </g>
+        </symbol>
+
+        <symbol id="alarm" viewBox="19 160 985 360">
+          <defs>
+              <rect id="path-1" x="20" y="160" width="984" height="358" rx="4"></rect>
+              <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+                  <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+                  <feColorMatrix values="0 0 0 0 0.784313725   0 0 0 0 0.882352941   0 0 0 0 0.945098039  0 0 0 1 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+              </filter>
+          </defs>
+          <g id="Rectangle" stroke="none" fill="none">
+              <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+              <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+          </g>
+        </symbol>
+      </svg>
+
+      <header class="header">
+        <h2>Olá, João.</h2>
+
+        <form  class="search">
+          <input type="search" name="s" />
+          <button type="submit"></button>
+        </form>
+
+      </header>
+
+      <section class="mails">
+      </section>
+
+
+      <template id="maintenances">
+        <article class="maintenance">
+          <div class="appresentation">
+            <h2 class="name">Marcelo</h2>
+            <h3 class="house">Borges de Medeiros</h3>
+          </div>
+          <div class="content">
+            <h4></h4>
+            Torneira da cozinha vazando muito, alaganado a sala e os quartos, gostaria de uma visita urgente pois a situação está insutentavel, muito obrigado.
+          </div>
+        </article>
+      </template>
+
+      <pre id="firebase"></pre>
+
     </body>
-    <script src="https://www.gstatic.com/firebasejs/3.0.4/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 
     <script>
+    (function(){
 
-      var config = {
-        apiKey: "AIzaSyAQB-SlAb9hmGTz9j1agLWogQkrbz-OvYw",
-        authDomain: "fuerza-lab.firebaseapp.com",
-        databaseURL: "https://fuerza-lab.firebaseio.com",
-        storageBucket: "fuerza-lab.appspot.com"
-      }
+        const config = {
+          apiKey: "AIzaSyAQB-SlAb9hmGTz9j1agLWogQkrbz-OvYw",
+          authDomain: "fuerza-lab.firebaseapp.com",
+          databaseURL: "https://fuerza-lab.firebaseio.com",
+          storageBucket: "fuerza-lab.appspot.com"
+        }
 
-      firebase.initializeApp(config)
+        firebase.initializeApp(config)
 
-      // Get a reference to the database service
-      var database = firebase.database()
+        const showMaintenaces = document.querySelector('.mails')
 
-      var users = database.ref('users').child('51983028087')
-      const home = document.querySelector('#home')
+        let maintenanceTemplate = document.querySelector('#maintenances')
+
+        // Get a reference to the database service
+        const database = firebase.database(),
+              users = database.ref('users'),
+              maintenances = database.ref('maintenances')
+
+        maintenances.on('value', snap =>{
 
 
-      users.on('value', (snapshot) => {
-        home.innerText = JSON.stringify(snapshot.val(), null, 3)
+          Object.keys(snap.val()).forEach( key => {
 
-        console.log(snapshot.val())
-      })
+            let requestedMaintenance =  snap.val()[key]
+            
+
+              Object.keys(requestedMaintenance).forEach( key =>{
+
+                maintenanceTemplate.content.querySelector('.content').innerText = `${requestedMaintenance[key].title}, ${requestedMaintenance[key].description}`
+
+                let clone = document.importNode(maintenanceTemplate.content, true)
+                showMaintenaces.appendChild(clone)
+
+              })
+
+          })
+
+        })
+
+    }())
 
     </script>
+
 </html>

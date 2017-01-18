@@ -1,0 +1,103 @@
+.store{
+  position: relative;
+  margin: 0.25vw 0.22%;
+  display: table;
+  width: 24.55%;
+  height: 25vh;
+  max-width: 24.55%;
+  border-radius: 3px;
+  background-color: $c2;
+  min-height: 240px;
+  text-align: center;
+
+  figure{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:  perspective(1px) translate3d(-50%, -50%,0);
+    width: 80%;
+    transition: all 0.2s linear;
+    -webkit-font-smoothing: antialiased;
+
+    img{
+      max-width: 100%;
+      height: auto;
+    }
+
+  }
+
+  &.featured{
+    width: 49.5%;
+    max-width: 49.5%;
+    height: 50vh;
+  }
+
+
+  .go-to-store{
+    position: absolute;
+    margin: 1.5em auto 0;
+    left: 50%;
+    display: table;
+    opacity: 0;
+    transform:  perspective(1px) translate3d(-50%, -40%,0);
+    transition: all 0.2s linear;
+  }
+
+  &:hover{
+
+    figure{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform:  perspective(1px) translate3d(-50%, -60%,0);
+      width: 80%;
+      -webkit-font-smoothing: antialiased;
+
+      img{
+        max-width: 100%;
+        height: auto;
+      }
+
+    }
+
+    .go-to-store{
+      opacity: 1;
+      transform:  perspective(1px) translate3d(-50%, -40%,0);
+
+    }
+
+  }
+
+}
+
+
+@media screen and (max-width: 768px) {
+  .store{
+    width: 32.55%;
+    max-width: 32.55%;
+  }
+}
+
+@media screen and(max-width: 540px){
+  .store{
+    width: 49.75%;
+    max-width: 49.75%;
+
+    &.featured{
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
+
+@media screen and(max-width: 400px){
+  .store{
+    width: 100%;
+    max-width: 100%;
+
+    &.featured{
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}

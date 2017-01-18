@@ -1,0 +1,16 @@
+.grid{
+  margin: 0 auto;
+  width: 96vw;
+  max-width: 1920px;
+}
+
+.stores{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  &:after {
+    content: "";
+    flex: auto;
+  }
+}

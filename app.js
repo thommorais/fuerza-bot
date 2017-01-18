@@ -16,10 +16,18 @@ fire = admin.initializeApp({
 maintenanceMode = false
 sender = ''
 stamp = ''
-testing = ''
+testing = false
 
 // set the view engine to ejs
 app.set('view engine', 'ejs')
+
+// css and
+app.use(express.static('views'))
+
+// index page
+app.get('/', function(req, res) {
+    res.render('index')
+})
 
 // index page
 

@@ -49,7 +49,7 @@ function getDatabase() {
         let where = global.fire.database()
 
         return where.ref(type).child(sender).once('value').then((snap) => {
-            return snap.val()
+          return snap.val()
         })
 
       }

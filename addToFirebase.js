@@ -2,6 +2,8 @@
 let request     = require('request'),
     rp          = require('request-promise'),
     token       = require('./token'),
+    getFireFile = require('./getFromFirebase'),
+    getFire     = new getFireFile(),
     tokenValue  = new token()
 
 function database(){
@@ -46,11 +48,14 @@ function database(){
 
   this.newMaintenance = (title, description) =>{
 
+    console.log(getFire.userExist(sender, 'indexes'))
+
     let path = `maintenances/${sender}/${stamp}`,
     data = {
       title : title,
       description : description,
       id : stamp,
+      sender : sender,
       status : 'Ainda não visualizado'
     }
 
@@ -71,13 +76,9 @@ function database(){
             sender : sender
           }
 
-      testing = false
-      console.log(number, path)
-
       add(path,data)
 
-
-
+    testing = false
   }
 
 
