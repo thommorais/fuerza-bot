@@ -45,10 +45,9 @@ function database(){
   }
 
 
+this.newMaintenance = (title, description) =>{
 
-  this.newMaintenance = (title, description) =>{
-
-    console.log(getFire.userExist(sender, 'indexes'))
+  getFire.userExist(sender, 'indexes').then(user => {
 
     let path = `maintenances/${sender}/${stamp}`,
     data = {
@@ -56,12 +55,14 @@ function database(){
       description : description,
       id : stamp,
       sender : sender,
+      user: user,
       status : 'Ainda não visualizado'
     }
 
     add(path,data)
 
-  }
+  })
+}
 
   this.justForTest = (number) => {
 
@@ -70,7 +71,7 @@ function database(){
             active : false,
             first_name : `test ${stamp}` ,
             full_name : `test testing ${stamp}` ,
-            houses : 'borges-medeiros',
+            house : 'borges_medeiros_1012',
             last_name : 'testing',
             phone : number,
             sender : sender

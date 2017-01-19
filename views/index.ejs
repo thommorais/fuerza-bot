@@ -65,9 +65,9 @@
 
       <template id="maintenances">
         <article class="maintenance">
+          <span class="house">Borges de Medeiros</span>
           <div class="appresentation">
             <h2 class="name">Marcelo</h2>
-            <h3 class="house">Borges de Medeiros</h3>
           </div>
           <div class="content">
             <h4></h4>
@@ -93,35 +93,54 @@
 
         firebase.initializeApp(config)
 
-        const showMaintenaces = document.querySelector('.mails')
-
-        let maintenanceTemplate = document.querySelector('#maintenances')
+        // Get elements from document
+        const showMaintenaces = document.querySelector('.mails'),
+              mmailTemp = document.querySelector('#maintenances')
 
         // Get a reference to the database service
         const database = firebase.database(),
-              users = database.ref('users'),
               maintenances = database.ref('maintenances')
 
-        maintenances.on('value', snap =>{
-
-
-          Object.keys(snap.val()).forEach( key => {
-
-            let requestedMaintenance =  snap.val()[key]
-            
-
-              Object.keys(requestedMaintenance).forEach( key =>{
-
-                maintenanceTemplate.content.querySelector('.content').innerText = `${requestedMaintenance[key].title}, ${requestedMaintenance[key].description}`
-
-                let clone = document.importNode(maintenanceTemplate.content, true)
-                showMaintenaces.appendChild(clone)
-
-              })
-
+        let getData = function(where, child){
+          return users = database.ref(where).child(child).once('value').then(snap => {
+            return snap.val()
           })
+        }
+        //
+        // function snapshot(snap){
+        //   return snap.val()
+        // }
+        //
+        // maintenances.on('value', snapshot)
 
+
+
+
+
+        // On change to on firebase
+        maintenances.on('child_added', snap =>{
+
+            Object.keys(snap.val()).forEach( key => {
+
+              let k = snap.val()[key]
+
+              getData('users', k.user).then(user =>{
+
+                getData('houses', user.house).then(house => {
+
+                  mmailTemp.content.querySelector('.name').innerText = `${user.first_name}`
+                  mmailTemp.content.querySelector('.house').innerText = `${house.address} - ${house.number}`
+                  mmailTemp.content.querySelector('.content').innerText = `${k.title}, ${k.description}`
+                  let clone = document.importNode(mmailTemp.content, true)
+
+                  showMaintenaces.appendChild(clone)
+
+                })
+              })
+            })
         })
+
+
 
     }())
 

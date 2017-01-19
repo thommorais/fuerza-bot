@@ -2,9 +2,10 @@ section{
   margin-top: 110px;
 }
 .maintenance{
-  margin: 0 1vw;
-  padding: 20px 2vw;
-  width: 98vw;
+  position: relative;
+  margin: 0 2vw;
+  padding:15px 2vw 17px;
+  width: 96vw;
   background-color: #fff;
   border-bottom: 1px solid lighten($c1,25%);
 
@@ -15,6 +16,48 @@ section{
   &:last-child{
     border-bottom: 0;
     border-radius: 0 0 3px 3px;
+  }
+
+  .house{
+    position: absolute;
+    bottom: 5px;
+    font-size: 10px;
+    opacity: 0.5;
+  }
+
+  > div{
+    display: inline-block;
+    vertical-align: middle;
+
+    h2, h3{
+      display: inline-block;
+    }
+  }
+
+  .appresentation{
+    margin-right: 30px;
+    max-width: 300px;
+    width: 20%;
+
+    h2{
+      font-size: 18px;
+    }
+
+  }
+
+  .content{
+    width: 70%;
+  }
+
+  .appresentation,
+  .content{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    h2, h3{
+      white-space: nowrap;
+    }
   }
 
 }
