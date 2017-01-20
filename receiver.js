@@ -30,10 +30,13 @@ function messenger() {
                     sender = event.sender.id
                     stamp = event.timestamp
 
+
+
                 // if user send a message
                 if (event.message) {
                     // if it is an attachment (location or media)
                     if (!event.message.is_echo) {
+                      console.log(event.sender)
 
                       if (event.message.attachments)
                           attachment.handler(event.message.attachments[0])
@@ -44,7 +47,8 @@ function messenger() {
 
                     // if is postback
                 } else if (event.postback) {
-                  postbacker.handler(event)
+                    console.log('postback', event.sender)
+                    postbacker.handler(event)
                 }
             }
         }

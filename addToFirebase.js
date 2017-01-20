@@ -59,7 +59,7 @@ this.newMaintenance = (title, description) =>{
         sender : sender,
         user: index,
         user_name: user.full_name,
-        house: `${house.address}-${house.number}`,
+        house: `${house.address} - ${house.number}`,
         status : 'Ainda não visualizado'
       }
 

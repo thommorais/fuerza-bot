@@ -111,9 +111,10 @@
 
         }
 
+        let  i = 1;
         // On change to on firebase
         maintenances.on('child_added', snap => {
-
+          console.log(i++)
           Object.keys(snap.val()).forEach(key => {
             render(snap.val()[key])
           })
