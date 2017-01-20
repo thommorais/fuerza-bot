@@ -49,19 +49,19 @@
         </symbol>
       </svg>
 
-      <header class="header">
-        <h2>Olá, João.</h2>
+      <main class="main">
+        <header class="header">
+          <h2>Olá, João.</h2>
 
-        <form  class="search">
-          <input type="search" name="s" />
-          <button type="submit"></button>
-        </form>
+          <form  class="search">
+            <input type="search" name="s" />
+            <button type="submit"></button>
+          </form>
 
-      </header>
-
-      <section class="mails">
-      </section>
-
+        </header>
+        <section class="mails">
+        </section>
+      </main>
 
       <template id="maintenances">
         <article class="maintenance">
@@ -82,68 +82,45 @@
     <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 
     <script>
-    (function(){
+    (function() {
 
         const config = {
-          apiKey: "AIzaSyAQB-SlAb9hmGTz9j1agLWogQkrbz-OvYw",
-          authDomain: "fuerza-lab.firebaseapp.com",
-          databaseURL: "https://fuerza-lab.firebaseio.com",
-          storageBucket: "fuerza-lab.appspot.com"
+            apiKey: "AIzaSyAQB-SlAb9hmGTz9j1agLWogQkrbz-OvYw",
+            authDomain: "fuerza-lab.firebaseapp.com",
+            databaseURL: "https://fuerza-lab.firebaseio.com",
+            storageBucket: "fuerza-lab.appspot.com"
         }
 
         firebase.initializeApp(config)
 
         // Get elements from document
         const showMaintenaces = document.querySelector('.mails'),
-              mmailTemp = document.querySelector('#maintenances')
+            mMailTemp = document.querySelector('#maintenances')
 
         // Get a reference to the database service
         const database = firebase.database(),
-              maintenances = database.ref('maintenances')
+            maintenances = database.ref('/maintenances')
 
-        let getData = function(where, child){
-          return users = database.ref(where).child(child).once('value').then(snap => {
-            return snap.val()
-          })
+        let render = (snap) =>{
+
+          mMailTemp.content.querySelector('.name').innerText = `${snap.user_name}`
+          mMailTemp.content.querySelector('.house').innerText = `${snap.house}`
+          mMailTemp.content.querySelector('.content').innerText = `${snap.title}, ${snap.description}`
+          let clone = document.importNode(mMailTemp.content, true)
+          showMaintenaces.appendChild(clone)
+
         }
-        //
-        // function snapshot(snap){
-        //   return snap.val()
-        // }
-        //
-        // maintenances.on('value', snapshot)
-
-
-
-
 
         // On change to on firebase
-        maintenances.on('child_added', snap =>{
+        maintenances.on('child_added', snap => {
 
-            Object.keys(snap.val()).forEach( key => {
+          Object.keys(snap.val()).forEach(key => {
+            render(snap.val()[key])
+          })
 
-              let k = snap.val()[key]
-
-              getData('users', k.user).then(user =>{
-
-                getData('houses', user.house).then(house => {
-
-                  mmailTemp.content.querySelector('.name').innerText = `${user.first_name}`
-                  mmailTemp.content.querySelector('.house').innerText = `${house.address} - ${house.number}`
-                  mmailTemp.content.querySelector('.content').innerText = `${k.title}, ${k.description}`
-                  let clone = document.importNode(mmailTemp.content, true)
-
-                  showMaintenaces.appendChild(clone)
-
-                })
-              })
-            })
         })
 
-
-
     }())
-
     </script>
 
 </html>

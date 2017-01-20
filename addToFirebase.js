@@ -47,20 +47,26 @@ function database(){
 
 this.newMaintenance = (title, description) =>{
 
-  getFire.userExist(sender, 'indexes').then(user => {
+  getFire.userExist(sender, 'indexes').then(index => {
+    getFire.userExist(index, 'users').then(user => {
+      getFire.userExist(user.house, 'houses').then(house => {
 
-    let path = `maintenances/${sender}/${stamp}`,
-    data = {
-      title : title,
-      description : description,
-      id : stamp,
-      sender : sender,
-      user: user,
-      status : 'Ainda não visualizado'
-    }
+        let path = `maintenances/${sender}/${stamp}`,
+        data = {
+        title : title,
+        description : description,
+        id : stamp,
+        sender : sender,
+        user: index,
+        user_name: user.full_name,
+        house: `${house.address}-${house.number}`,
+        status : 'Ainda não visualizado'
+      }
 
-    add(path,data)
+        add(path,data)
+      })
 
+    })
   })
 }
 

@@ -1,17 +1,17 @@
 
 .header{
   position: fixed;
-  top: 1vh;
-  margin: 0 2vw;
+  top: 2vh;
+  margin: 0 auto;
   z-index: 2;
-  min-height: 70px;
-  max-height: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 70px;
+  max-height: 90px;
   padding: 2vw;
   width: 96vw;
-  height: 100;
+  max-width: 1020px;
   background-color: $c1;
   border-radius: 3px;
   color: #fff;
@@ -19,14 +19,14 @@
   &:before{
     position: absolute;
     left: 5%;
+    z-index: -10;
     content: '';
-    bottom: -10px;
+    bottom: 0;
     width: 90%;
     height: 5vh;
     background-color: $c1;
     border-radius: 10px;
     filter: blur(15px);
   }
-
 
 }
