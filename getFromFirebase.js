@@ -60,26 +60,26 @@ function getDatabase() {
 
         return where.ref('maintenances').child(sender).once('value').then((snap) => {
 
-            let object = snap.val(),
-                maintenance = {}
+          let object = snap.val(),
+              maintenance = {}
 
-              if(object != null){
+            if(object != null){
 
-                Object.keys(object).forEach((key) => {
+              Object.keys(object).forEach((key) => {
 
-                  if(object[key].status != 'atendido')
-                    maintenance.maintenance = object
+                if(object[key].status != 'atendido')
+                  maintenance.maintenance = object
 
-                })
+              })
 
-                return maintenance
+              return maintenance
 
-              }
-              else{
+            }
+            else{
 
-                return false
+              return false
 
-              }
+            }
         })
 
       }
