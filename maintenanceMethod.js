@@ -18,8 +18,10 @@ function maintenancer() {
         }
 
     this.request = (msg) =>{
+        if(sender == 144854019344868){
+          console.log(msg)
+        }
 
-      console.log(msg)
 
       if(maintenanceObject.title == null){
         maintenanceObject.title = msg
@@ -33,10 +35,7 @@ function maintenancer() {
 
       if(maintenanceObject.title != null && maintenanceObject.description != null){
 
-let response = `${maintenanceObject.title}
-                ${maintenanceObject.description}`
-
-        addFire.newMaintenance(maintenanceObject.title, maintenanceObject.description)
+        addFire.newMaintenance(sender, maintenanceObject.title, maintenanceObject.description)
         senderMsg.send(sender,{text: 'Manutenção solicitada :)'})
 
         maintenanceMode = false

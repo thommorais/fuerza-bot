@@ -45,7 +45,9 @@ function database(){
   }
 
 
-this.newMaintenance = (title, description) =>{
+this.newMaintenance = (sender, title, description) =>{
+
+  console.log('fire', sender)
 
   getFire.userExist(sender, 'indexes').then(index => {
     getFire.userExist(index, 'users').then(user => {

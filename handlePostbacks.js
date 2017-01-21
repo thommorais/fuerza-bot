@@ -10,7 +10,7 @@ function postback() {
 
 
     this.handler = (event) => {
-        console.log(event.postback.payload)
+        //console.log(event.postback.payload)
         switch (event.postback.payload) {
 
           case 'GET STARTED':

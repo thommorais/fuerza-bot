@@ -95,30 +95,28 @@
 
         // Get elements from document
         const showMaintenaces = document.querySelector('.mails'),
-            mMailTemp = document.querySelector('#maintenances')
+              mMailTemp = document.querySelector('#maintenances')
 
         // Get a reference to the database service
         const database = firebase.database(),
-            maintenances = database.ref('/maintenances')
+              maintenances = database.ref().child('maintenances')
 
         let render = (snap) =>{
+        //  console.log(JSON.stringify(snap, null, 2))
 
-          mMailTemp.content.querySelector('.name').innerText = `${snap.user_name}`
-          mMailTemp.content.querySelector('.house').innerText = `${snap.house}`
-          mMailTemp.content.querySelector('.content').innerText = `${snap.title}, ${snap.description}`
-          let clone = document.importNode(mMailTemp.content, true)
-          showMaintenaces.appendChild(clone)
+          Object.keys(snap).forEach(key => {
+            mMailTemp.content.querySelector('.name').innerText = `${snap[key].user_name}`
+            mMailTemp.content.querySelector('.house').innerText = `${snap[key].house}`
+            mMailTemp.content.querySelector('.content').innerText = `${snap[key].title}, ${snap[key].description}`
+            let clone = document.importNode(mMailTemp.content, true)
+            showMaintenaces.appendChild(clone)
+          })
 
         }
 
-        let  i = 1;
-        // On change to on firebase
+        // On add to on firebase
         maintenances.on('child_added', snap => {
-          console.log(i++)
-          Object.keys(snap.val()).forEach(key => {
-            render(snap.val()[key])
-          })
-
+          render(snap.val())
         })
 
     }())

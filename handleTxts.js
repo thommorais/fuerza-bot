@@ -40,6 +40,13 @@ function textMessages() {
 
           if(maintenanceMode){
             maintenance.request(msg.text)
+
+
+              if(sender == 144854019344868){
+                console.log(msg.text)
+              }
+
+
           }
 
           else{

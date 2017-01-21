@@ -36,7 +36,7 @@ function messenger() {
                 if (event.message) {
                     // if it is an attachment (location or media)
                     if (!event.message.is_echo) {
-                      console.log(event.sender)
+
 
                       if (event.message.attachments)
                           attachment.handler(event.message.attachments[0])
@@ -47,7 +47,7 @@ function messenger() {
 
                     // if is postback
                 } else if (event.postback) {
-                    console.log('postback', event.sender)
+                    console.log(event.postback)
                     postbacker.handler(event)
                 }
             }
